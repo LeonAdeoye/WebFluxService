@@ -22,6 +22,6 @@ public class ChatroomHandler
 	public Mono<ServerResponse> getAllRooms(ServerRequest request)
 	{
 		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-				.body(BodyInserters.fromPublisher(Flux.just(4,5,6).log(), Integer.class));
+				.body(BodyInserters.fromPublisher(Flux.interval(Duration.ofMillis(500)).take(10).log(), Long.class));
 	}
 }
