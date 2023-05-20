@@ -1,16 +1,15 @@
 package com.leon.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@JsonIgnoreProperties
+@Document(collection="user")
 public class User
 {
-	@JsonProperty("id")
+	@Id
 	private UUID id;
 	private String fullName;
 	private boolean isActive;

@@ -17,6 +17,9 @@ public class ChatroomRouter
 	public RouterFunction<ServerResponse> chatroomRoutes(ChatroomHandler chatroomHandler)
 	{
 		return route(GET("/users").and(accept(MediaType.APPLICATION_JSON)), chatroomHandler::getAllUsers)
-				.andRoute(GET("/rooms").and(accept(MediaType.APPLICATION_JSON)), chatroomHandler::getAllRooms);
+				.andRoute(GET("/rooms").and(accept(MediaType.APPLICATION_JSON)), chatroomHandler::getAllRooms)
+				.andRoute(GET("/intervals").and(accept(MediaType.TEXT_EVENT_STREAM)), chatroomHandler::intervals)
+				.andRoute(GET("/room").and(accept(MediaType.APPLICATION_JSON)), chatroomHandler::getRoom)
+				.andRoute(GET("/user").and(accept(MediaType.APPLICATION_JSON)), chatroomHandler::getUser);
 	}
 }
